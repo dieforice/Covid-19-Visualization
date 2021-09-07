@@ -4,7 +4,7 @@ import matplotlib.animation as animation
 import numpy as np
 import mplcursors
 
-class Node:
+class Node: 
     def __init__(self, key, coordinates, infection_date, neighbors):
         self.key = key
         self.coordinates = coordinates
@@ -13,7 +13,7 @@ class Node:
         self.neighbors = neighbors
         self.active = True
 
-class Virus:
+class Virus: #construct a virus
     def __init__(self, time,incubation_period, contageous_period, transmissibility, graph):
         self.time = time
         self.incubation_period = incubation_period
@@ -108,8 +108,9 @@ class VisualizeVirus:
     def visualize2(self): #Visualisierung mit Eingabe aus example.txt
         self.fig1 = plt.figure()
         self.ax1 = self.fig1.add_subplot(1,1,1)
-        ani = animation.FuncAnimation(self.fig1,self.animate,interval = 30000)
+        ani = animation.FuncAnimation(self.fig1,self.animate,interval = 300)
         plt.show()
+    
         
     def animate(self,i):
         graph_data = open('example.txt','r').read()
@@ -184,6 +185,9 @@ def update(j,t,x,y,z,line1,line2,line3): #der Graph wird bis zum j. Tag gezeichn
     line2.set_data(t[:j],y[:j])
     line3.set_data(t[:j],z[:j])
     return [line1,line2,line3]
+
+#1st. example for input: VisualizeVirus().visualize(30,300,0.015,0.1,0.15,0,2,5,0.2)
+#this function will simulation a scenario where we can observe changes in everyday
 
 
 
